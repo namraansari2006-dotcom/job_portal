@@ -1,0 +1,527 @@
+ ```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerLaunch AI | Find Your Future</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #F7FAF7;
+            color: #12372A;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        nav {
+            background: #12372A;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            color: white;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #95D5B2;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #E8F5EC;
+            font-size: 14px;
+        }
+
+        .nav-links .signup {
+            background: #D8F3DC;
+            color: #12372A;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .nav-links .signup:hover {
+            background: #B7E4C7;
+        }
+
+        .hero {
+            background: linear-gradient(125deg, #12372A, #2D6A4F);
+            color: white;
+            padding: 75px 7% 65px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .eyebrow {
+            color: #B7E4C7;
+            letter-spacing: 2px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: clamp(34px, 5vw, 54px);
+            line-height: 1.15;
+            margin: 22px 0;
+        }
+
+        .hero p {
+            color: #E4F1E7;
+            max-width: 650px;
+            margin: 0 auto 28px;
+        }
+
+        .search-box {
+            background: white;
+            border-radius: 12px;
+            padding: 10px;
+            display: flex;
+            gap: 10px;
+            max-width: 760px;
+            margin: 30px auto 0;
+        }
+
+        .search-box input {
+            width: 100%;
+            min-width: 0;
+            padding: 14px;
+            border: 1px solid #DCE8DE;
+            border-radius: 7px;
+            outline-color: #40916C;
+        }
+
+        .search-box button {
+            background: #2D6A4F;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            padding: 0 22px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .search-box button:hover {
+            background: #1B4332;
+        }
+
+        .stats {
+            max-width: 900px;
+            margin: -25px auto 0;
+            width: 88%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            position: relative;
+        }
+
+        .stat {
+            background: white;
+            padding: 23px 12px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px #12372A12;
+            border: 1px solid #E2EDE4;
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 22px;
+            color: #2D6A4F;
+        }
+
+        .stat span {
+            color: #647568;
+            font-size: 13px;
+        }
+
+        section {
+            padding: 55px 7%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            font-size: 30px;
+            margin-bottom: 8px;
+            color: #12372A;
+        }
+
+        .section-heading p {
+            color: #647568;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 17px;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .category {
+            background: white;
+            color: #12372A;
+            padding: 24px 18px;
+            border: 1px solid #E2EDE4;
+            border-radius: 13px;
+            transition: 0.2s;
+        }
+
+        .category:hover, .job:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px #12372A14;
+            border-color: #95D5B2;
+        }
+
+        .category .emoji {
+            font-size: 27px;
+        }
+
+        .category h3 {
+            margin: 12px 0 5px;
+            font-size: 17px;
+        }
+
+        .category p {
+            color: #647568;
+            font-size: 13px;
+        }
+
+        .jobs-section {
+            background: #EAF4EC;
+        }
+
+        .jobs {
+            max-width: 1050px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .job {
+            background: white;
+            border: 1px solid #DCE8DE;
+            border-radius: 13px;
+            padding: 23px;
+            transition: 0.2s;
+        }
+
+        .job .type {
+            display: inline-block;
+            background: #D8F3DC;
+            color: #1B4332;
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 11px;
+            margin-bottom: 12px;
+        }
+
+        .job h3 {
+            margin-bottom: 7px;
+            color: #12372A;
+        }
+
+        .job p {
+            color: #647568;
+            font-size: 13px;
+            margin: 5px 0;
+        }
+
+        .job a {
+            display: inline-block;
+            color: #2D6A4F;
+            font-weight: bold;
+            margin-top: 17px;
+        }
+
+        .job a:hover {
+            color: #12372A;
+        }
+
+        .cta {
+            margin: 55px auto;
+            width: 86%;
+            max-width: 1050px;
+            background: #D8F3DC;
+            border: 1px solid #B7E4C7;
+            border-radius: 18px;
+            text-align: center;
+            padding: 45px 20px;
+        }
+
+        .cta h2 {
+            font-size: 29px;
+            margin-bottom: 10px;
+            color: #12372A;
+        }
+
+        .cta p {
+            color: #42634D;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #2D6A4F;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin: 5px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #1B4332;
+        }
+
+        .btn-light {
+            background: white;
+            color: #1B4332;
+            border: 1px solid #95D5B2;
+        }
+
+        .btn-light:hover {
+            background: #F7FAF7;
+        }
+
+        footer {
+            background: #12372A;
+            color: #E4F1E7;
+            text-align: center;
+            padding: 28px 15px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 800px) {
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .jobs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .search-box {
+                flex-direction: column;
+            }
+
+            .search-box button {
+                padding: 14px;
+            }
+
+            .categories, .jobs {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                gap: 7px;
+            }
+
+            .stat strong {
+                font-size: 17px;
+            }
+
+            .stat span {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a class="logo" href="/">CareerLaunch <span>AI</span></a>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#jobs">Latest Jobs</a>
+        <a href="/login">Login</a>
+        <a class="signup" href="/register">Sign Up Free</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="eyebrow">YOUR CAREER. YOUR NEXT CHAPTER.</div>
+
+        <h1>Find Work That Matches Your Potential.</h1>
+
+        <p>
+            Discover jobs, internships, and remote opportunities.
+            Find the right career path using your skills and interests.
+        </p>
+
+        <form class="search-box" action="/login" method="GET">
+            <input type="text" name="keyword"
+                   placeholder="Job title or skill, e.g. Python">
+            <input type="text" name="location"
+                   placeholder="City or Remote">
+            <button type="submit">Find Jobs →</button>
+        </form>
+    </div>
+</header>
+
+<div class="stats">
+    <div class="stat">
+        <strong>Smart</strong>
+        <span>Skills-Based Matching</span>
+    </div>
+    <div class="stat">
+        <strong>Freshers</strong>
+        <span>Beginner-Friendly Roles</span>
+    </div>
+    <div class="stat">
+        <strong>Flexible</strong>
+        <span>Career Opportunities</span>
+    </div>
+</div>
+
+<section id="categories">
+    <div class="section-heading">
+        <h2>Explore Job Categories</h2>
+        <p>Choose an opportunity that suits your goals.</p>
+    </div>
+
+    <div class="categories">
+        <a class="category" href="/login">
+            <div class="emoji">💻</div>
+            <h3>IT & Technology</h3>
+            <p>Python, Java, web development and more.</p>
+        </a>
+
+        <a class="category" href="/login">
+            <div class="emoji">🎓</div>
+            <h3>Internships</h3>
+            <p>Learn new skills and gain experience.</p>
+        </a>
+
+        <a class="category" href="/login">
+            <div class="emoji">🏠</div>
+            <h3>Remote Jobs</h3>
+            <p>Explore work-from-home opportunities.</p>
+        </a>
+
+        <a class="category" href="/login">
+            <div class="emoji">💼</div>
+            <h3>Customer Support</h3>
+            <p>Start your career in service and support.</p>
+        </a>
+
+        <a class="category" href="/login">
+            <div class="emoji">📊</div>
+            <h3>Data & Analytics</h3>
+            <p>Explore SQL, Excel and data roles.</p>
+        </a>
+
+        <a class="category" href="/login">
+            <div class="emoji">⏰</div>
+            <h3>Part-Time Jobs</h3>
+            <p>Find flexible work opportunities.</p>
+        </a>
+
+        <a class="category" href="/login">
+            <div class="emoji">🚀</div>
+            <h3>Entry-Level Jobs</h3>
+            <p>Opportunities for fresh graduates.</p>
+        </a>
+
+        <a class="category" href="/login">
+            <div class="emoji">📍</div>
+            <h3>Nearby Jobs</h3>
+            <p>Explore roles in your preferred city.</p>
+        </a>
+    </div>
+</section>
+
+<section class="jobs-section" id="jobs">
+    <div class="section-heading">
+        <h2>Explore Career Opportunities</h2>
+        <p>Start with these example roles from our demo portal.</p>
+    </div>
+
+    <div class="jobs">
+        <article class="job">
+            <span class="type">INTERNSHIP</span>
+            <h3>Python Developer Intern</h3>
+            <p>🏢 Tech Solutions</p>
+            <p>📍 Noida</p>
+            <p>Skills: Python, Flask, SQL</p>
+            <a href="/login">Explore Jobs →</a>
+        </article>
+
+        <article class="job">
+            <span class="type">FULL-TIME</span>
+            <h3>Web Developer</h3>
+            <p>🏢 WebWorks</p>
+            <p>📍 Remote</p>
+            <p>Skills: HTML, CSS, JavaScript</p>
+            <a href="/login">Explore Jobs →</a>
+        </article>
+
+        <article class="job">
+            <span class="type">FULL-TIME</span>
+            <h3>Data Analyst Trainee</h3>
+            <p>🏢 DataSmart</p>
+            <p>📍 Kanpur</p>
+            <p>Skills: Python, SQL, Excel</p>
+            <a href="/login">Explore Jobs →</a>
+        </article>
+    </div>
+</section>
+
+<div class="cta">
+    <h2>Ready to take the next step?</h2>
+    <p>Create your profile and discover jobs that match your skills.</p>
+    <a class="btn" href="/register">Create Free Account</a>
+    <a class="btn btn-light" href="/login">Login</a>
+</div>
+
+<footer>
+    <p>CareerLaunch AI — Your career journey starts here.</p>
+    <p>Demo project | Sample jobs are for demonstration only.</p>
+</footer>
+
+</body>
+</html>
+```

@@ -1,0 +1,301 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerLaunch AI | Student Registration</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #D8F3DC, #F7FAF7);
+            color: #12372A;
+        }
+
+        header {
+            min-height: 90px;
+            background: #12372A;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 8%;
+            gap: 15px;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 12px rgba(18, 55, 42, 0.12);
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+        }
+
+        .logo span {
+            color: #95D5B2;
+        }
+
+        .home-link {
+            text-decoration: none;
+            color: #12372A;
+            background: #D8F3DC;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .home-link:hover {
+            background: #B7E4C7;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 45px 18px;
+        }
+
+        .registration-card {
+            width: 100%;
+            max-width: 480px;
+            background: white;
+            padding: 35px 38px;
+            border-radius: 18px;
+            border: 1px solid #E2EDE4;
+            box-shadow: 0 12px 40px rgba(18, 55, 42, 0.10);
+        }
+
+        .tag {
+            display: inline-block;
+            background: #D8F3DC;
+            color: #1B4332;
+            padding: 8px 13px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: 29px;
+            margin-bottom: 10px;
+            color: #12372A;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #647568;
+            line-height: 1.6;
+            margin-bottom: 27px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #244B37;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #DCE8DE;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: 0.2s;
+            background: #FFFFFF;
+            color: #12372A;
+        }
+
+        input::placeholder {
+            color: #8A9A8E;
+        }
+
+        input:focus {
+            border-color: #40916C;
+            box-shadow: 0 0 0 3px rgba(64, 145, 108, 0.14);
+        }
+
+        .hint {
+            display: block;
+            margin-top: 6px;
+            font-size: 12px;
+            color: #718276;
+        }
+
+        .create-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #2D6A4F;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 5px;
+            transition: 0.2s;
+        }
+
+        .create-btn:hover {
+            background: #1B4332;
+            transform: translateY(-1px);
+        }
+
+        .login-text {
+            text-align: center;
+            margin-top: 23px;
+            font-size: 14px;
+            color: #647568;
+        }
+
+        .login-text a {
+            color: #2D6A4F;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .login-text a:hover {
+            color: #12372A;
+            text-decoration: underline;
+        }
+
+        .flash-message {
+            background: #FFF0F0;
+            color: #B42318;
+            padding: 11px;
+            border-radius: 7px;
+            font-size: 13px;
+            margin-bottom: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #E4F1E7;
+            background: #12372A;
+            font-size: 12px;
+        }
+
+        @media (max-width: 500px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            .logo {
+                font-size: 25px;
+            }
+
+            .registration-card {
+                padding: 28px 22px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            CareerLaunch <span>AI</span>
+        </div>
+
+        <a class="home-link" href="{{ url_for('home') }}">Home</a>
+    </header>
+
+    <main>
+        <section class="registration-card">
+            <h1>Create Student Account</h1>
+
+            <p class="subtitle">
+                Start your career journey with CareerLaunch AI.
+                Create your account to discover jobs and internships
+                that match your skills.
+            </p>
+
+            <form action="{{ url_for('register') }}" method="POST">
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email address"
+                        autocomplete="email"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Create Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Create a strong password"
+                        minlength="8"
+                        autocomplete="new-password"
+                        required>
+                    <span class="hint">Use at least 8 characters.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="skills">Your Skills</label>
+                    <input
+                        type="text"
+                        id="skills"
+                        name="skills"
+                        placeholder="Python, HTML, CSS, Java">
+                    <span class="hint">Separate skills with commas.</span>
+                </div>
+
+                <button type="submit" class="create-btn">
+                    Create Student Account →
+                </button>
+
+            </form>
+
+            <p class="login-text">
+                Already have an account?
+                <a href="{{ url_for('login') }}">Login</a>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        © 2026 CareerLaunch AI. Build your future with confidence.
+    </footer>
+
+</body>
+</html>
+```
